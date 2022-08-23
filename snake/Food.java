@@ -1,8 +1,6 @@
 package snake;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.Random;
 
 public class Food{
@@ -26,6 +24,10 @@ public class Food{
 		this.y = random.nextInt(maxY)*10;
 		
 		position[x][y] = true;
+	}
+	
+	public void removeFood(boolean[][] position) {
+		position[x][y] = false;
 	}
 	
 	public int getX() {

@@ -1,9 +1,7 @@
 package snake;
 
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class Game extends JPanel implements Runnable {
@@ -62,7 +60,6 @@ public class Game extends JPanel implements Runnable {
 	public void run() {
 		long lastTime = System.nanoTime();
 		double nsPerTick = 1000000000D / 8;
-		// / 64
 
 		double delta = 0;
 

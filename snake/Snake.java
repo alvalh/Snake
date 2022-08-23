@@ -1,8 +1,7 @@
 package snake;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.KeyEvent;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.LinkedList;
 
 public class Snake {
@@ -15,7 +14,7 @@ public class Snake {
 	Food food;
 	Score score;
 
-	LinkedList<SnakeBody> snake = new LinkedList();
+	LinkedList<SnakeBody> snake = new LinkedList<SnakeBody>();
 
 	public Snake(int x, int y, int height, int width) {
 		newSnake(x, y);
@@ -75,25 +74,22 @@ public class Snake {
 		// check collision with self or food
 		if (screen[x][y] == true) {
 			if (food.getX() == x && food.getY() == y) {
-				SnakeBody addedBody = new SnakeBody(food.getX(), food.getY());
-				snake.addLast(addedBody);
 				length++;
 
 				score.increaseScore();
-
+				
+				food.removeFood(screen);
 				food.spawnFood(screen);
 			} else {
 				gameOver = true;
 				gameOver();
 			}
 		} else {
-			screen[x][y] = true;
-			screen[snake.getLast().x][snake.getLast().y] = false;
-
 			// delete body to make snake move
+			screen[snake.getLast().x][snake.getLast().y] = false;
 			snake.removeLast();
 		}
-
+		screen[x][y] = true;
 	}
 
 	public int checkBorderY(int y) {
@@ -130,15 +126,8 @@ public class Snake {
 		} else {
 			GameOver.draw(g);
 		}
-		
-		//  for (int i = 0; i < 300; i++) { for (int j = 0; j < 300; j++) { if
-		 // (screen[i][j]) { debugDraw(g, i, j); } } }
 		 
 	}
-
-	
-	//  public void debugDraw(Graphics g, int x, int y) { g.setColor(Color.BLUE);
-	//  g.fillRect(x, y, 10, 10); }
 	 
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {

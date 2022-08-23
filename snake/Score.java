@@ -1,8 +1,6 @@
 package snake;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.*;
 
 public class Score {
 	
@@ -24,6 +22,6 @@ public class Score {
 		g.setColor(Color.white);
 		g.setFont(new Font("Consolas",Font.PLAIN,30));
 		
-		g.drawString(String.valueOf(score), WIDTH/2, 20);
+		g.drawString(String.valueOf(score), WIDTH/2, 30);
 	}
 }
